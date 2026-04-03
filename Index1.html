@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Somu | Portfolio</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 30px;
+  background: #020617;
+}
+
+header p {
+  color: #38bdf8;
+}
+
+section {
+  padding: 20px;
+}
+
+h2 {
+  border-bottom: 2px solid #38bdf8;
+}
+
+.card {
+  background: #1e293b;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+/* Chatbot */
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.chatbox {
+  display: none;
+  background: #1e293b;
+  width: 250px;
+  height: 300px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.messages {
+  height: 200px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+input {
+  width: 70%;
+  padding: 5px;
+}
+
+button {
+  padding: 5px;
+  background: #38bdf8;
+  border: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Somu</h1>
+  <p>Aspiring AI & Web Developer 🚀</p>
+</header>
+
+<section>
+  <h2>About Me</h2>
+  <p>
+    I am a passionate student interested in AI and Web Development.<br>
+    I enjoy building real-world projects that solve problems.<br>
+    I have worked on projects like VoiceCare and Heart Disease Prediction.<br>
+    I am eager to learn new technologies and improve my skills.<br>
+    My goal is to become a skilled software developer.
+  </p>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="card">Python</div>
+  <div class="card">HTML & CSS</div>
+  <div class="card">Machine Learning</div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+  <div class="card">
+    <h3>VoiceCare</h3>
+    <p>AI health assistant for physically challenged women.</p>
+  </div>
+
+  <div class="card">
+    <h3>Heart Disease Prediction</h3>
+    <p>Predicts heart disease using ML.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Email: somu68814@gmail.com</p>
+</section>
+
+<!-- Chatbot -->
+<div class="chatbot">
+  <button onclick="toggleChat()">💬 Chat</button>
+
+  <div class="chatbox" id="chatbox">
+    <div class="messages" id="messages"></div>
+    <input type="text" id="userInput" placeholder="Ask me...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+function toggleChat() {
+  let box = document.getElementById("chatbox");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+function sendMessage() {
+  let input = document.getElementById("userInput").value;
+  let messages = document.getElementById("messages");
+
+  let userMsg = "<p><b>You:</b> " + input + "</p>";
+  messages.innerHTML += userMsg;
+
+  let botReply = "";
+
+  if(input.toLowerCase().includes("skills")) {
+    botReply = "I know Python, HTML, CSS and AI basics.";
+  } 
+  else if(input.toLowerCase().includes("projects")) {
+    botReply = "I built VoiceCare and Heart Disease Prediction.";
+  }
+  else if(input.toLowerCase().includes("contact")) {
+    botReply = "You can email me at somu68814@gmail.com";
+  }
+  else {
+    botReply = "I am Somu's AI assistant 🤖";
+  }
+
+  let botMsg = "<p><b>Bot:</b> " + botReply + "</p>";
+  messages.innerHTML += botMsg;
+
+  document.getElementById("userInput").value = "";
+}
+</script>
+
+</body>
+</html>
